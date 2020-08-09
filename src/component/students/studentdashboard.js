@@ -20,11 +20,11 @@ constructor(props){
         return(<div>
             <Header2 history={this.props.history}/>
 
-                    <div id="mySidenav" className="sidenav">
+                    <div id="mySidenav" className="sidenav bg-dark">
                         <a href="#" className="closebtn" onClick={()=>{this.closeNav()}}>&times;</a>
 
                         <ul class="nav flex-column">
-                        <li class="dropdown-divider"></li>
+                        {/* <li class="dropdown-divider"></li> */}
                         <li class="nav-item">
                             <Link to="/dashboard/home"  className="nav-link "><i className="fa fa-home fa-1x text-success"> </i> Home</Link>
                         </li>

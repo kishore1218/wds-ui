@@ -3,6 +3,8 @@ import {  Link } from 'react-router-dom';
 import GenericComponent from "./generic.js";
 import * as ApiUtils from "./api.js";
 import '../nn.css';
+import logo from '../tswr_logo.svg';
+import '../App.css';
 
 class Header2 extends GenericComponent{
 
@@ -30,7 +32,7 @@ class Header2 extends GenericComponent{
         return(
                 <div>
                     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                        <a class="navbar-brand" href="#"><h2><i class="fa fa-users fa-2x text-warning" aria-hidden="true"></i> TSWR FineArts</h2></a>
+                        <a class="navbar-brand" href="#"><h2><img src={logo} className="App-logo" alt="logo" />TSWR Fine Arts</h2></a>
                         <ul class="navbar-nav ml-auto text-white">
                             <li class="nav-item">
                                  <Link to="/dashboard/home"  className="nav-link text-white"><i className="fa fa-home fa-1x text-success"> </i> Home</Link>

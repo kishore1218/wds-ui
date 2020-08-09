@@ -33,12 +33,9 @@ class StudentAdmission extends GenericComponent{
          var data = JSON.stringify(object);
          let p=ApiUtils.post('/academics/student',data,this.props);
          p.then((response)=>{
-
-           // this.golink("/users/userslist",{}) ;
-           return response.json();
-         }).then((json)=>{
-             alert(json);
-            this.setState({infoMsg:"Saved Student Id:"+json+" successfully!",isError:false,isMsg:true,});  
+            this.setState({infoMsg:"Saved Student  successfully!",isError:false,isMsg:true,});  
+            alert('Saved Student  successfully!');
+            this.golink("/students/list",{}) ;
          })
          .catch((error)=>{
             this.setState({errormsg:"Error In Saving..!",isError:true,isMsg:false,}); 

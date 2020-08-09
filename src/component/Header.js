@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {  Link } from 'react-router-dom';
+import logo from '../tswr_logo.svg';
+import '../App.css';
 
 const Header=()=>{
     return(<div>
@@ -8,7 +10,7 @@ const Header=()=>{
 
 <div>
                     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                        <a class="navbar-brand" href="#"><h2><i class="fa fa-users fa-2x text-warning" aria-hidden="true"></i> TSWR Fine Arts</h2></a>
+                        <a class="navbar-brand" href="#"><h2><img src={logo} className="App-logo " alt="logo" />TSWR Fine Arts</h2></a>
                         <ul class="navbar-nav ml-auto text-white">
                             <li class="nav-item">
                              <a class="nav-link text-white" href="/login">Login <i class="fa fa-sign-in" aria-hidden="true"></i></a>

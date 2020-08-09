@@ -26,7 +26,7 @@ class Dashboard extends GenericComponent{
             <Header2 history={this.props.history}/>
             <div className="container-fluid" >
 
-                <div id="mySidenav" className="sidenav">
+                <div id="mySidenav" className="sidenav bg-dark">
                     <a href="#" className="closebtn" onClick={()=>{this.closeNav()}}>&times;</a>
 
                     <ul class="nav flex-column">
