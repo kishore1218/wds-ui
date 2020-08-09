@@ -30,7 +30,7 @@ constructor(props){
                         </li>
                         <li class="dropdown-divider"></li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/students/admission"><i className="fa fa-user  text-warning"> </i> New Admission</a>
+                            <a class="nav-link" href="/students/admission"><i className="fa fa-user  text-warning"> </i> Registration</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/students/list"><i className="fa fa-users fa-1x text-info"> </i> Students</a>

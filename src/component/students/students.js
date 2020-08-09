@@ -129,9 +129,12 @@ class StudentsList  extends GenericComponent {
             return  response.json();
         }).then((json)=>{
             if(json){
-                this.setState({
-                    studentAcademics:json
-                }) ;
+                if(json){
+                    this.setState({
+                        studentAcademics:json
+                    }) ;
+                }
+
             }
         }).catch((error)=>{
             this.setState({errormsg:"Error In Loading..!",isError:true,isMsg:false,}); 
@@ -236,17 +239,19 @@ class StudentsList  extends GenericComponent {
                     </div>
 
 
-              <div class="form-group row">
+
+            
+            <div class="form-group row">
                     <label class="col-lg-3 col-form-label form-control-label">Academic Year:  </label>
                         <div class="col-lg-4">
-                        <select className="form-control"  id="academicYears" name="academicYears" onChange={this.getDisciplines}>
-                                        <option key="NA" value="-1">Select</option>
-                                            {
-                                                this.state.acaYears.map((ayear) => (
-                                                    <option key={ayear.id} value={ayear.id}>{ayear.period}</option>
-                                                ))
-                                            }
-                        </select>
+                        <select className="form-control" id="academicYears" onChange={this.getDisciplines}>
+                                            <option key="NA" value="-1">Select</option>
+                                                {
+                                                    this.state.acaYears.map((ayear) => (
+                                                        <option key={ayear.id} value={ayear.id}>{ayear.period}</option>
+                                                    ))
+                                                }
+                                            </select>
                         </div>
             </div>
 
@@ -299,8 +304,6 @@ class StudentsList  extends GenericComponent {
                         <tr>
                             <th>Name</th>
                             <th>Student Id</th>
-                            <th>Email</th>
-                            <th>Mobile</th>
                             <th>Gender</th>
                             <th>DOJ</th>
                             <th>Actions</th>
@@ -309,7 +312,7 @@ class StudentsList  extends GenericComponent {
                         <tbody>
                         {this.state.data.map((item) => (
                         <tr>
-                        <td> {item.lastName} {item.firstName}</td><td>{item.studId}</td><td>{item.email}</td><td>{item.mobile}</td><td>{item.gender}</td><td>{item.doj}</td>
+                        <td> {item.lastName} {item.firstName}</td><td>{item.studId}</td><td>{item.gender}</td><td>{item.doj}</td>
                         <td><div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>{this.viewUser(item.studId)}} value={item.id} data-toggle="modal" data-target="#myModal"><i className="fa fa-eye text-primary" ></i></button></div>
                         <div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>{this.editStudent(item.empId)}} value={item.id}><i className="fa fa-pencil-square-o text-success" ></i></button></div>
                         <div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>this.deleteStudent(item.empId)} value={item.id}><i className="fa fa-trash text-danger" ></i></button></div></td>

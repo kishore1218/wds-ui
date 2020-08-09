@@ -18,6 +18,27 @@ class StudentReport  extends GenericComponent {
         // this.getDisciplines();
     }
 
+    download=()=>{
+
+        var yearId=document.getElementById("academicYears").value;
+        var dispId=document.getElementById("disciplines").value;
+        var classId=document.getElementById("classes").value;
+
+        let p = ApiUtils.get('/reports/studentReport/'+yearId+"/"+dispId+"/"+classId,this.props);
+        p.then((response)=>{
+            response.blob().then(blob => {
+                let url = window.URL.createObjectURL(blob);
+                let a = document.createElement('a');
+                a.href = url;
+                a.download = "students.csv";
+                a.click();
+            });
+    
+        }).catch((error)=>{
+            this.setState({errormsg:"Error In Download..!",isError:true,isMsg:false,}); 
+        });
+    }
+
         getAcademicYears = ()=> {
 
         let p = ApiUtils.get('/admin/academicYears',this.props);
@@ -299,8 +320,9 @@ class StudentReport  extends GenericComponent {
                         <tr>
                             <th>Name</th>
                             <th>Student Id</th>
-                            <th>Email</th>
-                            <th>Mobile</th>
+                            <th>Academic Year</th>
+                            <th>Discipline</th>
+                            <th>Class</th>
                             <th>Gender</th>
                             <th>DOJ</th>
                             <th>Actions</th>
@@ -309,7 +331,7 @@ class StudentReport  extends GenericComponent {
                         <tbody>
                         {this.state.data.map((item) => (
                         <tr>
-                        <td> {item.lastName} {item.firstName}</td><td>{item.studId}</td><td>{item.email}</td><td>{item.mobile}</td><td>{item.gender}</td><td>{item.doj}</td>
+                        <td> {item.lastName} {item.firstName}</td><td>{item.studId}</td><td>{item.acaYear}</td><td>{item.discipline}</td><td>{item.clazz}</td><td>{item.gender}</td><td>{item.doj}</td>
                         <td><div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>{this.viewUser(item.studId)}} value={item.id} data-toggle="modal" data-target="#myModal"><i className="fa fa-eye text-primary" ></i></button></div>
                         <div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>{this.editStudent(item.empId)}} value={item.id}><i className="fa fa-pencil-square-o text-success" ></i></button></div>
                         <div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>this.deleteStudent(item.empId)} value={item.id}><i className="fa fa-trash text-danger" ></i></button></div></td>

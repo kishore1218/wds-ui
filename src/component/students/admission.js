@@ -37,8 +37,8 @@ class StudentAdmission extends GenericComponent{
            // this.golink("/users/userslist",{}) ;
            return response.json();
          }).then((json)=>{
+             alert(json);
             this.setState({infoMsg:"Saved Student Id:"+json+" successfully!",isError:false,isMsg:true,});  
-            document.getElementById("studform").reset();
          })
          .catch((error)=>{
             this.setState({errormsg:"Error In Saving..!",isError:true,isMsg:false,}); 
@@ -93,26 +93,26 @@ class StudentAdmission extends GenericComponent{
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">S/o </label>
                                     <div class="col-lg-6">
-                                    <input type="text" className="form-control" name="gaurdian" id="gaurdian" placeholder="Gaurdian" required/>
+                                    <input type="text" className="form-control" name="gaurdian" id="gaurdian" placeholder="Gaurdian" />
                                     </div>
                                 </div>
 
                                  <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Email</label>
                                     <div class="col-lg-9">
-                                    <input type="email" className="form-control" name="email" id="email" placeholder="Email" required/>
+                                    <input type="email" className="form-control" name="email" id="email" placeholder="Email" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Mobile</label>
                                     <div class="col-lg-9">
-                                    <input type="mobile" className="form-control"  name="mobile" id="mobile" placeholder="### ### ####" required/>
+                                    <input type="mobile" className="form-control"  name="mobile" id="mobile" placeholder="### ### ####" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Date of Birth:</label>
                                     <div class="col-lg-9">
-                                        <input type="date" className="form-control" name="dob" id="dob" placeholder="dd/mm/yyyy" required/> 
+                                        <input type="date" className="form-control" name="dob" id="dob" placeholder="dd/mm/yyyy" /> 
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -132,7 +132,7 @@ class StudentAdmission extends GenericComponent{
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Aadhar</label>
                                     <div class="col-lg-9">
-                                    <input type="text" className="form-control"  name="aadhar" id="pan" placeholder="##########" required/>
+                                    <input type="text" className="form-control"  name="aadhar" id="pan" placeholder="##########" />
                                     </div>
                                 </div>
                     
@@ -143,32 +143,32 @@ class StudentAdmission extends GenericComponent{
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Address</label>
                                     <div class="col-lg-9">
-                                    <input type="text" className="form-control" name="addrLine1" id="addrLine1" placeholder="Street Address" required/>
+                                    <input type="text" className="form-control" name="addrLine1" id="addrLine1" placeholder="Street Address" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label"></label>
                                     <div class="col-lg-9">
-                                    <input type="text" className="form-control" name ="city" id="city" placeholder="City" required /> 
+                                    <input type="text" className="form-control" name ="city" id="city" placeholder="City"  /> 
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label"></label>
                                     <div class="col-lg-9">
-                                    <input type="text" className="form-control" name="state" id="state" placeholder="State" required/>  
+                                    <input type="text" className="form-control" name="state" id="state" placeholder="State" />  
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label"></label>
                                     <div class="col-lg-9">
-                                    <input type="text" className="form-control" name="country" id="country" placeholder="Country" required/>
+                                    <input type="text" className="form-control" name="country" id="country" placeholder="Country" />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label"></label>
                                     <div class="col-lg-9">
-                                    <input type="number" className="form-control" name="zipCode" id="zipCode" placeholder="Zipcode" required/>
+                                    <input type="number" className="form-control" name="zipCode" id="zipCode" placeholder="Zipcode" />
                                     </div>
                                 </div>  
                                 <hr class="my-5"/>
