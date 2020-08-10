@@ -40,9 +40,11 @@ class HomeLinks extends GenericComponent{
                 <div className="container-fluid" >
                 <div className="row">
                     <div className="page-header">
-                        <h1>Quick Links</h1>
+                        <h1>Quick Links</h1>                       
                     </div>
+                   
                 </div>
+                <hr/>
             <div className="container">	
                  <div className="row"> 
                     { this.state.modules.map((module) => (

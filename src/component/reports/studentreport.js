@@ -331,10 +331,9 @@ class StudentReport  extends GenericComponent {
                         <tbody>
                         {this.state.data.map((item) => (
                         <tr>
-                        <td> {item.lastName} {item.firstName}</td><td>{item.studId}</td><td>{item.acaYear}</td><td>{item.discipline}</td><td>{item.clazz}</td><td>{item.gender}</td><td>{item.doj}</td>
-                        <td><div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>{this.viewUser(item.studId)}} value={item.id} data-toggle="modal" data-target="#myModal"><i className="fa fa-eye text-primary" ></i></button></div>
-                        <div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>{this.editStudent(item.empId)}} value={item.id}><i className="fa fa-pencil-square-o text-success" ></i></button></div>
-                        <div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>this.deleteStudent(item.empId)} value={item.id}><i className="fa fa-trash text-danger" ></i></button></div></td>
+                        <td> {item.lastName} {item.firstName}</td><td>{item.studId}</td><td>{item.acaYear}</td><td>{item.discipline}-{item.clazz}</td><td>{item.studClass}</td><td>{item.gender}</td><td>{item.doj}</td>
+                        <td><div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>{this.viewUser(item.studId)}} value={item.id} data-toggle="modal" data-target="#myModal"><i className="fa fa-eye text-primary" ></i></button></div>                        
+                        </td>
                         </tr>
                     ))}
                         </tbody>

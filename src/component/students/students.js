@@ -220,8 +220,8 @@ class StudentsList  extends GenericComponent {
                                         <tbody class="text-primary">
                                         {this.state.studentAcademics.map((item) => (
                                         <tr>
-                                        <td><h6>{item.discipline}</h6></td>
-                                        <td><h6>{item.acaClass}</h6></td>
+                                        <td><h6>{item.discipline}-{item.acaClass}</h6></td>
+                                        <td><h6>{item.studentClass}</h6></td>
                                         <td><h6>{item.academicYear}</h6></td>
                                         <td><h6>{item.status}</h6></td>                                
                                         </tr>

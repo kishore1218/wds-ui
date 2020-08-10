@@ -10,6 +10,7 @@ class StudentAcdemics extends GenericComponent{
             enable:false,
             studentAcademics:[],
             allAcademics:[],
+            studClasses:[],
             student:{},
             enableInfo:false,
             errormsg:'',
@@ -18,6 +19,7 @@ class StudentAcdemics extends GenericComponent{
             isMsg:false
         }
         this.allAcademics();
+        this.getStudentClasses();
     }
 
     getStudent=(studId)=>{
@@ -60,7 +62,21 @@ class StudentAcdemics extends GenericComponent{
         });
 
     }
+    getStudentClasses = ()=> {
 
+        let p = ApiUtils.get('/academics/studClasses',this.props);
+        p.then((response)=>{
+        return  response.json();
+        }).then((json)=>{
+            if(json){
+                this.setState({
+                    studClasses:json,
+                }) ;
+            }  
+        }).catch((error)=>{
+            this.setState({errormsg:"Error In Loading..!",isError:true,isMsg:false,}); 
+        });
+    }
     enableDisableUnAssign=(flag)=>{
         this.setState({
             enable:flag
@@ -89,9 +105,13 @@ class StudentAcdemics extends GenericComponent{
         var studId = document.getElementById("studentId").value;
 
         var acadispId=document.getElementById("academicclass").value;
+        var sclassId=document.getElementById("studClasses").value;
+
+        
         let object={};
         object['studId']=studId;
         object['acdDispClassId']=acadispId;
+        object['studentClassId']=sclassId;
         var data = JSON.stringify(object);
 
         let p = ApiUtils.post('/academics/studentAcademic',data,this.props);
@@ -150,7 +170,7 @@ class StudentAcdemics extends GenericComponent{
 
                     <div class="form-group row text-primary">
                     <label  class="col-lg-3 col-form-label form-control-label">Student: </label>
-                        <div className="col-lg-2">                                      
+                        <div className="col-lg-6">                                      
                         <h4>{this.state.student.firstName} {this.state.student.lastName} ({this.state.student.studId})</h4>
                     </div>
                     </div>:<div></div>}
@@ -164,6 +184,7 @@ class StudentAcdemics extends GenericComponent{
                                         <tr>                                        
                                             <th>Discipline</th>
                                             <th>Class</th>
+                                            <th>Student Class</th>
                                             <th>Period</th>
                                             <th>Status</th>
                                             <th>Actions</th>
@@ -174,6 +195,7 @@ class StudentAcdemics extends GenericComponent{
                                         <tr>
                                         <td><h6>{item.discipline}</h6></td>
                                         <td><h6>{item.acaClass}</h6></td>
+                                        <td><h6>{item.studentClass}</h6></td>
                                         <td><h6>{item.academicYear}</h6></td>
                                         <td><h6>{item.status}</h6></td>
                                         <td><div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>{this.deleteFacultyAcademic(item.id)}} ><i className="fa fa-trash text-danger" ></i></button></div></td>
@@ -201,6 +223,20 @@ class StudentAcdemics extends GenericComponent{
                                         </select>
                                     </div>                       
                             </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label">Student Classes:</label>
+                                    <div class="col-lg-6">
+                                    <select className="form-control"  id="studClasses" name="studClasses">
+                                        <option key="NA" value="-1">Select</option>
+                                            {
+                                                this.state.studClasses.map((sclass) => (
+                                                    <option key={sclass.id} value={sclass.id}>{sclass.name}</option>
+                                                ))
+                                            }
+                                        </select>
+                                    </div>                       
+                            </div>
+
                            <hr/>
 
                                 <div  className="form-check-inline" >

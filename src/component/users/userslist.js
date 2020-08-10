@@ -77,6 +77,7 @@ class UserList  extends GenericComponent {
             <div>
             <div className="page-header">
                 <h1>Users List</h1>
+                <hr/>
              </div> 
 
 
@@ -122,14 +123,8 @@ class UserList  extends GenericComponent {
                     </div>
                     </div>
 
-
-             <div className="card">
-                            <div class="card-header bg-info text-white">
-                                <h6 class="mb-0">Users</h6>
-                            </div> 
-                            <div className="card-body">
-                <table className="table table-bordered .table-hover">
-                        <thead>
+                <table className="table">
+                        <thead className="thead-dark">
                         <tr>
                             <th>Name</th>
                             <th>Emp Id</th>
@@ -151,8 +146,6 @@ class UserList  extends GenericComponent {
                     ))}
                         </tbody>
                 </table>
-                </div>
-            </div>
         </div>
         );
     }
