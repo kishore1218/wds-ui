@@ -2,7 +2,7 @@
 import { browserHistory } from 'react-router';
 import jwt from 'jwt-decode';
 
-const base_url='http://INND1LPRQ2:8082';
+const base_url='http://ec2-18-220-116-220.us-east-2.compute.amazonaws.com:8082';
 // const base_url='http://10.140.247.125:8086';
 
 
