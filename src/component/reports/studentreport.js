@@ -275,7 +275,7 @@ class StudentReport  extends GenericComponent {
                     <label class="col-lg-3 col-form-label form-control-label">Disciplines:  </label>
                         <div class="col-lg-4">
                         <select className="form-control" id="disciplines" onChange={this.getClasses}>
-                                            <option key="NA" value="-1">Select</option>
+                                            <option key="NA" value="-1">All</option>
                                                 {
                                                     this.state.disciplines.map((discipline) => (
                                                         <option key={discipline.id} value={discipline.id}>{discipline.name}</option>
@@ -288,7 +288,7 @@ class StudentReport  extends GenericComponent {
                     <label class="col-lg-3 col-form-label form-control-label">Classes:  </label>
                         <div class="col-lg-4">
                         <select className="form-control" id="classes">
-                                            <option key="NA" value="-1">Select</option>
+                                            <option key="NA" value="-1">All</option>
                                                 {
                                                     this.state.classes.map((clz) => (
                                                         <option key={clz.id} value={clz.id}>{clz.name}</option>
@@ -320,9 +320,9 @@ class StudentReport  extends GenericComponent {
                         <tr>
                             <th>Name</th>
                             <th>Student Id</th>
-                            <th>Academic Year</th>
-                            <th>Discipline</th>
                             <th>Class</th>
+                            <th>Discipline</th>
+                            <th>FA Class</th>
                             <th>Gender</th>
                             <th>DOJ</th>
                             <th>Actions</th>
@@ -331,7 +331,7 @@ class StudentReport  extends GenericComponent {
                         <tbody>
                         {this.state.data.map((item) => (
                         <tr>
-                        <td> {item.lastName} {item.firstName}</td><td>{item.studId}</td><td>{item.acaYear}</td><td>{item.discipline}-{item.clazz}</td><td>{item.studClass}</td><td>{item.gender}</td><td>{item.doj}</td>
+                        <td> {item.lastName} {item.firstName}</td><td>{item.studId}</td><td>{item.studClass}</td><td>{item.discipline}</td><td>{item.clazz}</td><td>{item.gender}</td><td>{item.doj}</td>
                         <td><div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>{this.viewUser(item.studId)}} value={item.id} data-toggle="modal" data-target="#myModal"><i className="fa fa-eye text-primary" ></i></button></div>                        
                         </td>
                         </tr>

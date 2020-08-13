@@ -147,34 +147,26 @@ class StudentAcdemics extends GenericComponent{
                     <hr/>
                 </div> 
                 {errorbutton}{infobutton}
+                <center>
+        <div className="input-group col-md-4 ">
+            <input class="form-control py-2 border-right-0 border" type="search" placeholder="Student Id" name="student" id="studentId"/>
 
-                <div class="form-group row">
-                    <label class="col-lg-3 col-form-label form-control-label">Student Id: </label>
-                        <div class="col-lg-4">
-                         <input type="text" className="form-control" name="student" id="studentId"/>
-                        </div>
-                </div>
-
-
-
-                <div class="form-group row">
-                        <label  class="col-lg-3 col-form-label form-control-label"></label>
-                              <div className="col-lg-2">                                      
-                             <button type="button" class="form-control btn btn-info" onClick={()=>{this.getStudentAcademics()}}>Search</button>
-                         </div>
-                 </div>
+            <span class="input-group-append">
+              <button class="btn btn-outline-secondary border-left-0 border" type="button"  onClick={()=>{this.getStudentAcademics()}}>
+                    <i class="fa fa-search"></i>
+              </button>
+            </span>
+        </div>
 
                  <hr/>
 
                  {this.state.enableInfo?
-
-                    <div class="form-group row text-primary">
-                    <label  class="col-lg-3 col-form-label form-control-label">Student: </label>
-                        <div className="col-lg-6">                                      
-                        <h4>{this.state.student.firstName} {this.state.student.lastName} ({this.state.student.studId})</h4>
-                    </div>
-                    </div>:<div></div>}
-
+                
+                        <table className="text-center text-success">
+                          
+                             <tr><td>Student Id:</td><td>{this.state.student.studId}</td><td>Name: </td><td>{this.state.student.firstName} {this.state.student.lastName} </td></tr>
+                        </table>:<div></div>}
+                        </center>
                  <div class="btn-block pull-right">
                     <button type="button" className="btn btn-success pull-right" onClick={()=>{this.enableDisableUnAssign(true)}}><i class="fa fa-plus" aria-hidden="true"></i> </button>
                  </div>

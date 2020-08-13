@@ -44,7 +44,7 @@ class AdminDashboard extends GenericComponent{
                             <a class="nav-link" href="/admin/syllabus"><i className="fa fa-book  text-success"> </i> Syllabus</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/admin/academicClasses"><i className="fa fa-th-large  text-danger"> </i> Classes</a>
+                            <a class="nav-link" href="/admin/academicClasses"><i className="fa fa-th-large  text-danger"> </i> FA Classes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/academicDispClasses"><i className="fa fa fa-cubes  text-info"> </i> Academic Class</a>

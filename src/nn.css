@@ -3,7 +3,7 @@
     width: 250px;
     position: fixed;
     z-index: 1;
-    top: 135px;
+    top: 141px;
     left: 0;
     /* background-color: #111; */
     overflow-x: hidden;
@@ -18,7 +18,6 @@
     display: block;
     transition: 0.3s;
   }
-
   
   .sidenav a:hover {
     color: #f1f1f1;
@@ -42,3 +41,31 @@
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
+
+  .navbar {
+    min-height: 80px;
+    max-height: 140px;
+  }
+  
+  .navbar-brand {
+    /* padding: 0 15px; */
+    height: 150px;
+    line-height: 80px;
+  }
+  
+  .navbar-toggle {
+    /* (80px - button height 34px) / 2 = 23px */
+    margin-top: 23px;
+    padding: 9px 10px !important;
+  }
+  
+  @media (min-width: 768px) {
+    .navbar-nav > li > a {
+      /* (80px - line-height of 27px) / 2 = 26.5px */
+      padding-top: 26.5px;
+      padding-bottom: 26.5px;
+      line-height: 27px;
+    }
+  }
+
+  

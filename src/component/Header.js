@@ -10,7 +10,8 @@ const Header=()=>{
 
 <div>
                     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                        <a class="navbar-brand" href="#"><h2><img src={logo} className="App-logo " alt="logo" />TSWR Fine Arts</h2></a>
+                    <img class="navbar-brand" src={logo} alt="logo"/><h2 className="text-white">TSWR Fine Arts School</h2>
+                        {/* <a class="navbar-brand d-lg-none" href="#"><h2><img src={logo} className="App-logo " alt="logo" />TSWR Fine Arts</h2></a> */}
                         <ul class="navbar-nav ml-auto text-white">
                             <li class="nav-item">
                              <a class="nav-link text-white" href="/login">Login <i class="fa fa-sign-in" aria-hidden="true"></i></a>

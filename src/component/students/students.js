@@ -259,7 +259,7 @@ class StudentsList  extends GenericComponent {
                     <label class="col-lg-3 col-form-label form-control-label">Disciplines:  </label>
                         <div class="col-lg-4">
                         <select className="form-control" id="disciplines" onChange={this.getClasses}>
-                                            <option key="NA" value="-1">Select</option>
+                                            <option key="NA" value="-1">All</option>
                                                 {
                                                     this.state.disciplines.map((discipline) => (
                                                         <option key={discipline.id} value={discipline.id}>{discipline.name}</option>
@@ -272,7 +272,7 @@ class StudentsList  extends GenericComponent {
                     <label class="col-lg-3 col-form-label form-control-label">Classes:  </label>
                         <div class="col-lg-4">
                         <select className="form-control" id="classes">
-                                            <option key="NA" value="-1">Select</option>
+                                            <option key="NA" value="-1">All</option>
                                                 {
                                                     this.state.classes.map((clz) => (
                                                         <option key={clz.id} value={clz.id}>{clz.name}</option>

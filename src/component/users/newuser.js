@@ -148,11 +148,11 @@ class NewUser extends GenericComponent{
                                     <label class="col-lg-3 col-form-label form-control-label">Gender </label>
                                     {/* <div class="col-lg-9"> */}
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="gender1" name="gender" class="custom-control-input" value="Male" />
+                                            <input type="radio" id="gender1" name="gender" class="custom-control-input" value="M" />
                                             <label class="custom-control-label" for="gender1">Male</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="gender2" name="gender" class="custom-control-input" value="female"/>
+                                            <input type="radio" id="gender2" name="gender" class="custom-control-input" value="F"/>
                                             <label class="custom-control-label" for="gender2">Female</label>
                                         </div>
                                     {/* </div> */}

@@ -55,16 +55,17 @@ class Header2 extends GenericComponent{
 
 
                     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-                        <a class="navbar-brand" href="#"><h2><img src={logo} className="App-logo" alt="logo" />TSWR Fine Arts</h2></a>
+                        {/* <a class="navbar-brand" href="#"><h2><img src={logo} className="" alt="logo" />TSWR Fine Arts</h2></a> */}
+                        <img class="navbar-brand" src={logo} alt="logo"/><h2 className="text-white">TSWR Fine Arts School</h2>
                         <ul class="navbar-nav ml-auto text-white">
                             <li class="nav-item">
-                                 <Link to="/dashboard/home"  className="nav-link text-white"><i className="fa fa-home fa-1x text-success"> </i> Home</Link>
+                                 <Link to="/dashboard/home"  className="nav-link text-white"><i className="fa fa-home fa-2x text-success"> </i> Home</Link>
                             </li>
                             <li class="nav-item">
-                                <a className="nav-link text-white" href="#">{this.state.username} <span className="fa fa-user "> </span></a>
+                                <a className="nav-link text-white" href="#"><span className="fa fa-user fa-2x text-warning"> </span> {this.state.username}</a>
                             </li> 
                             <li class="nav-item">
-                            <a className="nav-link text-white" href="#" onClick={()=>this.openNav()}><span class="fa fa-bars" ></span></a>
+                            <a className="nav-link text-white" href="#" onClick={()=>this.openNav()}><span class="fa fa-bars fa-2x text-primary" ></span></a>
                             </li>
                         </ul>
                     </nav>
