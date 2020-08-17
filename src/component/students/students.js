@@ -156,12 +156,26 @@ class StudentsList  extends GenericComponent {
             });
 
       }
-      editStudent=(id)=>{
-
+    editStudent=(id)=>{
+        alert(id);
+        this.golink("/students/editstudent",{"studId":id});  
       }
 
-      deleteStudent=(id)=>{
+    disableStudent=(id)=>{
 
+        if (confirm("Confirm Delete!")) {
+            let p = ApiUtils.remove('/academics/disableStudent/'+id,this.props);
+            p.then((response)=>{
+                this.getStudents();
+                this.setState({infoMsg:"Deleted successfully!",isError:false,isMsg:true,});                   
+            }).catch((error)=>{
+                this.setState({errormsg:"Error In Deletion..!",isError:true,isMsg:false,}); 
+            });
+          } else {
+           
+          }
+
+          
     }
 
     render(){
@@ -306,16 +320,17 @@ class StudentsList  extends GenericComponent {
                             <th>Student Id</th>
                             <th>Gender</th>
                             <th>DOJ</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
                         {this.state.data.map((item) => (
                         <tr>
-                        <td> {item.lastName} {item.firstName}</td><td>{item.studId}</td><td>{item.gender}</td><td>{item.doj}</td>
+                        <td> {item.lastName} {item.firstName}</td><td>{item.studId}</td><td>{item.gender}</td><td>{item.doj}</td><td>{item.status==='Y'?'Active':'Disabled'}</td>
                         <td><div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>{this.viewUser(item.studId)}} value={item.id} data-toggle="modal" data-target="#myModal"><i className="fa fa-eye text-primary" ></i></button></div>
-                        <div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>{this.editStudent(item.empId)}} value={item.id}><i className="fa fa-pencil-square-o text-success" ></i></button></div>
-                        <div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>this.deleteStudent(item.empId)} value={item.id}><i className="fa fa-trash text-danger" ></i></button></div></td>
+                        <div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>{this.editStudent(item.studId)}} value={item.id}><i className="fa fa-pencil-square-o text-success" ></i></button></div>
+                        {item.status==='Y'?<div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>this.disableStudent(item.studId)} value={item.id}><i className="fa fa-trash text-danger" ></i></button></div>:<div></div>}</td>
                         </tr>
                     ))}
                         </tbody>

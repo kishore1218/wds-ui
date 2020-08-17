@@ -95,6 +95,7 @@ class Role extends GenericComponent{
     }
 
     deleteRole=(roleId)=>{
+        if (confirm("Confirm Delete!")) {
 
         let p = ApiUtils.remove('/admin/role/'+roleId,this.props);
         p.then((response)=>{
@@ -103,6 +104,7 @@ class Role extends GenericComponent{
         }).catch((error)=>{
             this.setState({errormsg:"Error In Deletion..!",isError:true,isMsg:false,}); 
         });
+     }
     }
 
     render(){

@@ -75,7 +75,6 @@ class NewUser extends GenericComponent{
          let p=ApiUtils.post('/accounts/employee',data,this.props);
          p.then((response)=>{
             this.setState({infoMsg:"Saved successfully!",isError:false,isMsg:true,});  
-            alert(response);
             this.golink("/users/userslist",{}) ;
          }).catch((error)=>{
             this.setState({errormsg:"Error In Saving..!",isError:true,isMsg:false,}); 
@@ -223,8 +222,8 @@ class NewUser extends GenericComponent{
                                             <label class="custom-control-label" for="employmentType1">Permanent</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="employmentType2" name="employmentType" class="custom-control-input" value="contractor"/>
-                                            <label class="custom-control-label" for="employmentType2">Contract</label>
+                                            <input type="radio" id="employmentType2" name="employmentType" class="custom-control-input" value="Outsourcing"/>
+                                            <label class="custom-control-label" for="employmentType2">Outsourcing</label>
                                         </div>
                                     {/* </div> */}
                                 </div>

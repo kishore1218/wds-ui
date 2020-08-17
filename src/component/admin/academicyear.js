@@ -78,14 +78,15 @@ class AcademicYear extends GenericComponent{
         });
     }
     deleteAcademicYear=(id)=>{
-
-        let p = ApiUtils.remove('/admin/academicyear/'+id,this.props);
-        p.then((response)=>{
-            this.setState({infoMsg:"Deleted successfully!",isError:false,isMsg:true,});   
-             this.getAcademicYears();
-        }).catch((error)=>{
-            this.setState({errormsg:"Error In Deletion..!",isError:true,isMsg:false,}); 
-        });
+        if (confirm("Confirm Delete!")) {
+            let p = ApiUtils.remove('/admin/academicyear/'+id,this.props);
+            p.then((response)=>{
+                this.setState({infoMsg:"Deleted successfully!",isError:false,isMsg:true,});   
+                this.getAcademicYears();
+            }).catch((error)=>{
+                this.setState({errormsg:"Error In Deletion..!",isError:true,isMsg:false,}); 
+            });
+    }
     }
     render(){
         const isError=this.state.isError;
@@ -164,7 +165,10 @@ class AcademicYear extends GenericComponent{
                                         <td><h6>{item.period}</h6></td>
                                         <td><h6>{item.code}</h6></td>
                                         <td><h6>{item.status}</h6></td>
-                                        <td><div className="btn-group"><button className="btn btn-default btn-sm" onClick={()=>this.deleteAcademicYear(item.id)} ><i className="fa fa-trash text-danger" ></i></button>{item.status==='Active'?<div><button className="btn btn-default btn-sm" onClick={()=>{this.toggleAcademicYear(item.id,'De-Active')}}><i class="fa fa-toggle-off text-success" aria-hidden="true"></i></button></div>:<div><button className="btn btn-default btn-sm" placeholder="Activate"onClick={()=>{this.toggleAcademicYear(item.id,'Active')}}><i class="fa fa-toggle-on text-warning" aria-hidden="true"></i></button></div>}</div></td>
+                                        <td>
+                                            <div className="btn-group">
+                                                {/* <button className="btn btn-default btn-sm" onClick={()=>this.deleteAcademicYear(item.id)} ><i className="fa fa-trash text-danger" ></i></button> */}
+                                                {item.status==='Active'?<div><button className="btn btn-default btn-sm" onClick={()=>{this.toggleAcademicYear(item.id,'De-Active')}}><i class="fa fa-toggle-off text-success" aria-hidden="true"></i></button></div>:<div><button className="btn btn-default btn-sm" placeholder="Activate"onClick={()=>{this.toggleAcademicYear(item.id,'Active')}}><i class="fa fa-toggle-on text-warning" aria-hidden="true"></i></button></div>}</div></td>
                                         </tr>
                                         ))}
                                     </tbody>

@@ -6,6 +6,7 @@ import Footer from '../Footer.js';
 import StudentAdmission from './admission.js';
 import StudentsList from'./students.js';
 import StudentAcdemics from './studentAcademics.js';
+import EditStudent from './editstudent.js';
 
 
 class StudentDashboard extends GenericComponent{
@@ -52,7 +53,8 @@ constructor(props){
                     <div id="main" className="text-center">
                         <Route path="/students/admission" component={StudentAdmission}/>    
                         <Route path="/students/list" component={StudentsList}/>    
-                        <Route path="/students/studentAcademics" component={StudentAcdemics}/>            
+                        <Route path="/students/studentAcademics" component={StudentAcdemics}/>      
+                        <Route path="/students/editstudent" component={EditStudent}/>  
                     </div>    
             <Footer/>                
         </div>);

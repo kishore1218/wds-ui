@@ -19,12 +19,11 @@ class EditUser extends GenericComponent{
             sRoleId:-1,
             sSupId:-1
         }
-        // this.getEmployee(props.location.state.empId);
-        this.employee = JSON.parse(JSON.stringify(props.location.state.employee));
-        this.props
+        this.getEmployee(props.location.state.empId);
         this.getRoles();
         this.getSupervisors();
     }
+    
 
     getEmployee = (empId)=> {
 
@@ -92,6 +91,18 @@ class EditUser extends GenericComponent{
         });
         return p;
     }
+
+   handleChange=(event)=>{
+    event.preventDefault();
+    const name = event.target.name;
+    const value = event.target.value;
+    const emp = this.state.employee;    
+    emp[name] = event.target.value;
+    this.setState({
+        employee: emp 
+    });    
+   }
+
     handleSubmit=(event)=>{
         event.preventDefault();
         let object = {};
@@ -116,6 +127,7 @@ class EditUser extends GenericComponent{
          let p=ApiUtils.put('/accounts/employee',data,this.props);
          p.then((response)=>{
             this.setState({infoMsg:"Saved successfully!",isError:false,isMsg:true,});   
+            this.golink("/users/userslist",{}) ;
          }).catch((error)=>{
             this.setState({errormsg:"Error In Saving..!",isError:true,isMsg:false,}); 
          });         
@@ -158,59 +170,59 @@ class EditUser extends GenericComponent{
                       
                         <div class="card-body">
                             <form class="form" role="form" onSubmit={this.handleSubmit} >
-                            <input type="hidden" name="id" value={this.employee.id}/>
+                            <input type="hidden" name="id" value={this.state.employee.id}/>
                             <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Employee Id:</label>
                                     <div class="col-lg-9">
-                                        <input type="text" className="form-control" name="empId" id="empId" value={this.employee.empId} disabled/> 
+                                        <input type="text" className="form-control" name="empId" id="empId" value={this.state.employee.empId} disabled/> 
                                     </div>
                                 </div>
                             <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Date of Joining:</label>
                                     <div class="col-lg-9">
-                                        <input type="date" className="form-control" name="doj" id="doj" value={this.employee.doj} placeholder="dd/mm/yyyy" disabled/> 
+                                        <input type="date" className="form-control" name="doj" id="doj" value={this.state.employee.doj} placeholder="dd/mm/yyyy" disabled/> 
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">First name</label>
                                     <div class="col-lg-6">
-                                        <input type="text" className="form-control" name="firstName" id="firstName" placeholder="First name" value='{this.employee.firstName}' required/>
+                                        <input type="text" className="form-control" name="firstName" id="firstName" placeholder="First name" value={this.state.employee.firstName} required onChange={this.handleChange}/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Last name</label>
                                     <div class="col-lg-6">
-                                    <input type="text" className="form-control" name="lastName" id="lastName" placeholder="SurName" value={this.employee.lastName} required/>
+                                    <input type="text" className="form-control" name="lastName" id="lastName" placeholder="SurName" value={this.state.employee.lastName} required onChange={this.handleChange}/>
                                     </div>
                                 </div>
 
                                  <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Email</label>
                                     <div class="col-lg-9">
-                                    <input type="email" className="form-control" name="email" id="email" placeholder="Email" value={this.employee.email} required/>
+                                    <input type="email" className="form-control" name="email" id="email" placeholder="Email" value={this.state.employee.email} required onChange={this.handleChange}/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Mobile</label>
                                     <div class="col-lg-9">
-                                    <input type="mobile" className="form-control"  name="mobile" id="mobile" placeholder="### ### ####" value={this.employee.mobile} required/>
+                                    <input type="mobile" className="form-control"  name="mobile" id="mobile" placeholder="### ### ####" value={this.state.employee.mobile} required onChange={this.handleChange}/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Date of Birth:</label>
                                     <div class="col-lg-9">
-                                        <input type="date" className="form-control" name="dob" id="dob" placeholder="dd/mm/yyyy" value={this.props.location.state.employee.dob} required/> 
+                                        <input type="date" className="form-control" name="dob" id="dob" placeholder="dd/mm/yyyy" value={this.state.employee.dob} required onChange={this.handleChange}/> 
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Gender </label>
                                     {/* <div class="col-lg-9"> */}
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="gender1" name="gender" class="custom-control-input" value="Male" checked={this.employee.gender==='Male'}/>
+                                            <input type="radio" id="gender1" name="gender" class="custom-control-input" value="Male" checked={this.state.employee.gender==='Male'} onChange={this.handleChange}/>
                                             <label class="custom-control-label" for="gender1">Male</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="gender2" name="gender" class="custom-control-input" value="female" checked={this.employee.gender==='female'}/>
+                                            <input type="radio" id="gender2" name="gender" class="custom-control-input" value="female" checked={this.state.employee.gender==='female'} onChange={this.handleChange}/>
                                             <label class="custom-control-label" for="gender2">Female</label>
                                         </div>
                                     {/* </div> */}
@@ -219,25 +231,25 @@ class EditUser extends GenericComponent{
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">PAN</label>
                                     <div class="col-lg-9">
-                                    <input type="text" className="form-control"  name="pan" id="pan" value={this.employee.pan} placeholder="##########" required/>
+                                    <input type="text" className="form-control"  name="pan" id="pan" value={this.state.employee.pan} placeholder="##########" required onChange={this.handleChange}/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Qualification</label>
                                     <div class="col-lg-9">
-                                    <input type="text" className="form-control"  name="qualification" id="qualification" value={this.employee.qualification} placeholder="Qualification" required/>
+                                    <input type="text" className="form-control"  name="qualification" id="qualification" value={this.state.employee.qualification} placeholder="Qualification" required onChange={this.handleChange}/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Designation</label>
                                     <div class="col-lg-9">
-                                    <input type="text" className="form-control"  name="designation" id="designation" value={this.employee.designation} placeholder="Designation" required/>
+                                    <input type="text" className="form-control"  name="designation" id="designation" value={this.state.employee.designation} placeholder="Designation" required onChange={this.handleChange}/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Role</label>
                                     <div class="col-lg-9">
-                                    <select className="form-control"  id="role" name="role" value={this.employee.role.roleId} required  >
+                                    <select className="form-control"  id="role" name="role" value={this.state.sRoleId} required  >
                                         <option key="-1" value="">None</option>
                                         {
                                             this.state.roles.map((role) => (
@@ -251,11 +263,11 @@ class EditUser extends GenericComponent{
                                     <label class="col-lg-3 col-form-label form-control-label">Is Supervisor </label>
                                     {/* <div class="col-lg-9"> */}
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="isSupervisor1" name="isSupervisor" class="custom-control-input" value="Y" checked={this.employee.isSupervisor==='Y'}/>
+                                            <input type="radio" id="isSupervisor1" name="isSupervisor" class="custom-control-input" value="Y" checked={this.state.employee.isSupervisor==='Y'} onChange={this.handleChange}/>
                                             <label class="custom-control-label" for="isSupervisor1">Yes</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="isSupervisor2" name="isSupervisor" class="custom-control-input" value="N" checked={this.employee.isSupervisor==='N'}/>
+                                            <input type="radio" id="isSupervisor2" name="isSupervisor" class="custom-control-input" value="N" checked={this.state.employee.isSupervisor==='N'} onChange={this.handleChange}/>
                                             <label class="custom-control-label" for="isSupervisor2">No</label>
                                         </div>
                                     {/* </div> */}
@@ -263,7 +275,7 @@ class EditUser extends GenericComponent{
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Supervisor</label>
                                     <div class="col-lg-9">
-                                    <select className="form-control"  id="supervisor" name="supervisor" value={this.employee.supervisor} >
+                                    <select className="form-control"  id="supervisor" name="supervisor" value={this.state.employee.supervisor} onChange={this.handleChange}>
                                         <option key="-1" value="-1">Select</option>
                                         {
                                             this.state.supervisors.map((sup) => (
@@ -277,12 +289,12 @@ class EditUser extends GenericComponent{
                                     <label class="col-lg-3 col-form-label form-control-label">Employee Type </label>
                                     {/* <div class="col-lg-9"> */}
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="employmentType1" name="employmentType" class="custom-control-input" value="Permanent" checked={this.employee.employementType==='Permanent'}/>
+                                            <input type="radio" id="employmentType1" name="employmentType" class="custom-control-input" value="Permanent" checked={this.state.employee.employmentType==='Permanent'} onChange={this.handleChange}/>
                                             <label class="custom-control-label" for="employmentType1">Permanent</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="employmentType2" name="employmentType" class="custom-control-input" value="contractor" checked={this.employee.employementType==='contractor'}/>
-                                            <label class="custom-control-label" for="employmentType2">Contract</label>
+                                            <input type="radio" id="employmentType2" name="employmentType" class="custom-control-input" value="Outsourcing" checked={this.state.employee.employmentType==='contractor'} onChange={this.handleChange}/>
+                                            <label class="custom-control-label" for="employmentType2">Out Sourcing</label>
                                         </div>
                                     {/* </div> */}
                                 </div>
@@ -290,32 +302,32 @@ class EditUser extends GenericComponent{
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label">Address</label>
                                     <div class="col-lg-9">
-                                    <input type="text" className="form-control" name="addrLine1" id="addrLine1" value={this.employee.addrLine1} placeholder="Street Address" required/>
+                                    <input type="text" className="form-control" name="addrLine1" id="addrLine1" value={this.state.employee.addrLine1} placeholder="Street Address" required onChange={this.handleChange}/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label"></label>
                                     <div class="col-lg-9">
-                                    <input type="text" className="form-control" name ="city" id="city" placeholder="City" required value={this.employee.city}/> 
+                                    <input type="text" className="form-control" name ="city" id="city" placeholder="City" required value={this.state.employee.city} onChange={this.handleChange}/> 
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label"></label>
                                     <div class="col-lg-9">
-                                    <input type="text" className="form-control" name="state" id="state" placeholder="State" required value={this.employee.state}/>  
+                                    <input type="text" className="form-control" name="state" id="state" placeholder="State" required value={this.state.employee.state} onChange={this.handleChange}/>  
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label"></label>
                                     <div class="col-lg-9">
-                                    <input type="text" className="form-control" name="country" id="country" placeholder="Country" required value={this.employee.country}/>
+                                    <input type="text" className="form-control" name="country" id="country" placeholder="Country" required value={this.state.employee.country} onChange={this.handleChange}/>
                                     </div>
                                 </div>r
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label"></label>
                                     <div class="col-lg-9">
-                                    <input type="number" className="form-control" name="zipCode" id="zipCode" placeholder="Zipcode" required value={this.employee.zipCode}/>
+                                    <input type="number" className="form-control" name="zipCode" id="zipCode" placeholder="Zipcode" required value={this.state.employee.zipCode} onChange={this.handleChange}/>
                                     </div>
                                 </div>  
                                 <hr class="my-5"/>
@@ -328,7 +340,7 @@ class EditUser extends GenericComponent{
                                 <div class="form-group row">
                                     <label class="col-lg-3 col-form-label form-control-label"></label>
                                     <div class="col-lg-9">
-                                    <input type="password" className="form-control" name ="defaultPassword" id="password" placeholder="Default Password" required/> 
+                                    <input type="password" className="form-control" name ="defaultPassword" id="password" placeholder="Default Password" /> 
                                     </div>
                                 </div>
                 

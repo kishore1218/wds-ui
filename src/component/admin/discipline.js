@@ -56,14 +56,15 @@ class Disciplines extends GenericComponent{
         });
     }
     deleteDiscipline=(id)=>{
-
-        let p = ApiUtils.remove('/admin/discipline/'+id,this.props);
-        p.then((response)=>{
-            this.setState({infoMsg:"Deleted successfully!",isError:false,isMsg:true,});   
-             this.getDisciplines();
-        }).catch((error)=>{
-            this.setState({errormsg:"Error In Deletion..!",isError:true,isMsg:false,}); 
-        });
+        if (confirm("Confirm Delete!")) {
+            let p = ApiUtils.remove('/admin/discipline/'+id,this.props);
+            p.then((response)=>{
+                this.setState({infoMsg:"Deleted successfully!",isError:false,isMsg:true,});   
+                this.getDisciplines();
+            }).catch((error)=>{
+                this.setState({errormsg:"Error In Deletion..!",isError:true,isMsg:false,}); 
+            });
+     }
     }
     render(){
         const isError=this.state.isError;
